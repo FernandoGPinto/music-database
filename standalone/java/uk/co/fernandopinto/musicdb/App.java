@@ -38,10 +38,6 @@ import static org.hibernate.testing.transaction.TransactionUtil.doInJPA;
 
 public class App extends Application {
 
-    private ObservableList<ObservableList> data;
-    private TableView tableView;
-    private Integer orderId;
-
     public static void main(String[] args) {
 
         launch(args);
