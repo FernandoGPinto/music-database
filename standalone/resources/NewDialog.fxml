@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.GridPane?>
+
+<ScrollPane fx:id="dialogAP" xmlns="http://javafx.com/javafx"
+            stylesheets="@Style.css"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="test.view.NewDialogController" fitToHeight="true" fitToWidth="true" hbarPolicy="ALWAYS"
+            maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            nodeOrientation="LEFT_TO_RIGHT" vbarPolicy="ALWAYS">
+    <GridPane fx:id="dialogGP" hgap="15" vgap="10">
+        <Button prefHeight="30" prefWidth="150" mnemonicParsing="false" onAction="#handleOk" text="OK"
+                GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+        <Button prefHeight="30" prefWidth="150" mnemonicParsing="false" onAction="#handleCancel" text="Cancel"
+                GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+    </GridPane>
+</ScrollPane>
+

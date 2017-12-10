@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="flipPane" layoutX="70.0" layoutY="137.0" prefHeight="472.0" prefWidth="900.0"
+           xmlns:fx="http://javafx.com/fxml/1" fx:controller="test.view.ViewController">
+    <AnchorPane fx:id="anchorPane" prefHeight="472.0" prefWidth="900.0">
+        <Label layoutX="10.0" prefHeight="52.0" prefWidth="880.0" text="Orders Placed" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="14.0"/>
+            </font>
+        </Label>
+        <Button layoutX="590.0" layoutY="5.0" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
+                onMouseClicked="#handleNewRecords" prefHeight="40.0" prefWidth="100.0" text="New" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="16.0"/>
+            </font>
+        </Button>
+        <Button layoutX="690.0" layoutY="5.0" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
+                onMouseClicked="#handleEditRecords" prefHeight="40.0" prefWidth="100.0" text="Edit"
+                textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="16.0"/>
+            </font>
+        </Button>
+        <Button layoutX="790.0" layoutY="5.0" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
+                onMouseClicked="#handleDeleteRecords" prefHeight="40.0" prefWidth="100.0" text="Delete"
+                textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="16.0"/>
+            </font>
+        </Button>
+        <TableView fx:id="tableView" layoutX="10.0" layoutY="52.0" prefHeight="368.0" prefWidth="880.0"/>
+        <Button layoutX="690.0" layoutY="427.0" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
+                onMouseClicked="#handleExportRecords" prefHeight="40.0" prefWidth="100.0" text="Export"
+                textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="16.0"/>
+            </font>
+        </Button>
+        <Button layoutX="790.0" layoutY="427.0" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
+                onMouseClicked="#handleReturn" prefHeight="40.0" prefWidth="100.0" text="Return" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="16.0"/>
+            </font>
+        </Button>
+    </AnchorPane>
+    <GridPane fx:id="gridPane" prefHeight="472.0" prefWidth="900.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="70.0" prefWidth="70.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="70.0"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="122.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="122.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="122.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="122.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="122.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="122.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="122.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="122.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="122.0" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="122.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="122.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="146.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="110.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        </rowConstraints>
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="63.0" prefWidth="302.0" text="Select Data"
+               textFill="WHITE"
+               GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <font>
+                <Font name="Magneto Bold" size="20.0"/>
+            </font>
+        </Label>
+        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
+                onMouseClicked="#handleOrdProd"
+                prefHeight="77.0" prefWidth="332.0" text="Orders" textFill="WHITE" GridPane.columnIndex="1"
+                GridPane.rowIndex="2">
+            <font>
+                <Font name="System Bold" size="16.0"/>
+            </font>
+        </Button>
+        <TextField fx:id="orderIdText" disable="true" onKeyTyped="#handleEnableViewData" GridPane.columnIndex="3"
+                   GridPane.rowIndex="3"/>
+        <TextField fx:id="orderNameText" disable="true" onKeyTyped="#handleEnableViewData" GridPane.columnIndex="3"
+                   GridPane.rowIndex="4"/>
+        <SplitPane disable="true" dividerPositions="0.5" prefHeight="200.0" prefWidth="200.0"
+                   GridPane.columnIndex="3"
+                   GridPane.rowIndex="5">
+            <DatePicker fx:id="orderStartDate" onMouseClicked="#handleEnableViewData" prefHeight="25.0"
+                        prefWidth="92.0"
+                        promptText="Start"/>
+            <DatePicker fx:id="orderEndDate" onMouseClicked="#handleEnableViewData" prefHeight="25.0"
+                        prefWidth="92.0"
+                        promptText="End"/>
+        </SplitPane>
+        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
+                onMouseClicked="#handleOrdProd"
+                prefHeight="68.0" prefWidth="230.0" text="Products" textFill="WHITE" GridPane.columnIndex="1"
+                GridPane.rowIndex="7">
+            <font>
+                <Font name="System Bold" size="16.0"/>
+            </font>
+        </Button>
+        <Label alignment="CENTER_RIGHT" disable="true" prefHeight="54.0" prefWidth="164.0" text="Link Products?"
+               textFill="WHITE"
+               GridPane.columnIndex="2" GridPane.rowIndex="6">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+            <padding>
+                <Insets right="10.0"/>
+            </padding>
+        </Label>
+        <SplitPane disable="true" dividerPositions="0.5" prefHeight="200.0" prefWidth="200.0"
+                   GridPane.columnIndex="3"
+                   GridPane.rowIndex="6">
+            <Button mnemonicParsing="false" onMouseClicked="#handleLinkYes" prefHeight="54.0" prefWidth="92.0"
+                    text="Yes"
+                    textFill="WHITE">
+                <font>
+                    <Font name="System Bold" size="15.0"/>
+                </font>
+            </Button>
+            <Button mnemonicParsing="false" onMouseClicked="#handleLinkNo" prefHeight="50.0" prefWidth="92.0"
+                    text="No"
+                    textFill="WHITE">
+                <font>
+                    <Font name="System Bold" size="15.0"/>
+                </font>
+            </Button>
+        </SplitPane>
+        <Button alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false"
+                onMouseClicked="#handleAllOrders" prefHeight="39.0" prefWidth="212.0" text="All" textFill="WHITE"
+                GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+        </Button>
+        <Button alignment="CENTER" contentDisplay="CENTER" disable="true"
+                mnemonicParsing="false"
+                onMouseClicked="#handleAllProducts" prefHeight="39.0" prefWidth="212.0" text="All" textFill="WHITE"
+                GridPane.columnIndex="3" GridPane.rowIndex="7">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+        </Button>
+        <Label alignment="CENTER_RIGHT" disable="true" prefHeight="54.0" prefWidth="164.0" text="Link Orders?"
+               textFill="WHITE"
+               GridPane.columnIndex="2" GridPane.rowIndex="11">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+            <padding>
+                <Insets right="10.0"/>
+            </padding>
+        </Label>
+        <SplitPane disable="true" dividerPositions="0.5" prefHeight="200.0" prefWidth="200.0"
+                   GridPane.columnIndex="3"
+                   GridPane.rowIndex="11">
+            <Button mnemonicParsing="false" onMouseClicked="#handleLinkYes" prefHeight="54.0" prefWidth="92.0"
+                    text="Yes"
+                    textFill="WHITE">
+                <font>
+                    <Font name="System Bold" size="15.0"/>
+                </font>
+            </Button>
+            <Button mnemonicParsing="false" onMouseClicked="#handleLinkNo" prefHeight="50.0" prefWidth="92.0"
+                    text="No"
+                    textFill="WHITE">
+                <font>
+                    <Font name="System Bold" size="15.0"/>
+                </font>
+            </Button>
+        </SplitPane>
+        <TextField fx:id="productIdText" disable="true" onKeyTyped="#handleEnableViewData" GridPane.columnIndex="3"
+                   GridPane.rowIndex="8"/>
+        <TextField fx:id="productReferenceText" disable="true" onKeyTyped="#handleEnableViewData"
+                   GridPane.columnIndex="3"
+                   GridPane.rowIndex="9"/>
+        <TextField fx:id="productNameText" disable="true" onKeyTyped="#handleEnableViewData"
+                   GridPane.columnIndex="3"
+                   GridPane.rowIndex="10"/>
+        <Button disable="true" mnemonicParsing="false" onMouseClicked="#handleViewData"
+                prefHeight="393.0"
+                prefWidth="148.0" text="View Data" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="2"
+                GridPane.rowSpan="10">
+            <font>
+                <Font name="Magneto Bold" size="20.0"/>
+            </font>
+            <GridPane.margin>
+                <Insets left="5.0" right="5.0"/>
+            </GridPane.margin>
+        </Button>
+        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" disable="true" mnemonicParsing="false"
+                onMouseClicked="#handleSelection" prefHeight="31.0" prefWidth="152.0" text="ID:" textFill="WHITE"
+                GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+        </Button>
+        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" disable="true" mnemonicParsing="false"
+                onMouseClicked="#handleSelection" prefHeight="31.0" prefWidth="152.0" text="Customer Name:"
+                textFill="WHITE"
+                GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+        </Button>
+        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" disable="true" mnemonicParsing="false"
+                onMouseClicked="#handleSelection" prefHeight="31.0" prefWidth="152.0" text="Date/Period:"
+                textFill="WHITE"
+                GridPane.columnIndex="2" GridPane.rowIndex="5">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+        </Button>
+        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" disable="true" mnemonicParsing="false"
+                onMouseClicked="#handleSelection" prefHeight="31.0" prefWidth="152.0" text="ID:" textFill="WHITE"
+                GridPane.columnIndex="2" GridPane.rowIndex="8">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+        </Button>
+        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" disable="true" mnemonicParsing="false"
+                onMouseClicked="#handleSelection" prefHeight="31.0" prefWidth="152.0" text="Reference:"
+                textFill="WHITE"
+                GridPane.columnIndex="2" GridPane.rowIndex="9">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+        </Button>
+        <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" disable="true" mnemonicParsing="false"
+                onMouseClicked="#handleSelection" prefHeight="31.0" prefWidth="152.0" text="Name:" textFill="WHITE"
+                GridPane.columnIndex="2" GridPane.rowIndex="10">
+            <font>
+                <Font name="System Bold" size="15.0"/>
+            </font>
+        </Button>
+    </GridPane>
+</StackPane>

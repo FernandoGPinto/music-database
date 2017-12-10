@@ -1,0 +1,190 @@
+#homePane {
+    -fx-background-image:url('background.jpg');
+    -fx-background-size: cover;
+}
+
+#dialogAP {
+    -fx-background-color: rgba(0, 0, 0);
+}
+
+#dialogGP {
+    -fx-background-color: rgba(0, 0, 0);
+    -fx-padding: 20px, 20px, 20px, 20px;
+}
+
+#dialogGP .label {
+    -fx-font-size: 12pt;
+    -fx-font-family: "System Bold";
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-pref-width: 120px;
+    -fx-alignment: CENTER_RIGHT;
+}
+
+#dialogGP .text-field {
+    -fx-pref-width: 120px;
+}
+
+#dialogGP .date-picker {
+    -fx-pref-width: 120px;
+}
+
+#dialogGP .button {
+    -fx-font-size: 12pt;
+    -fx-font-family: "System Bold";
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+#importPane {
+    -fx-background-color: rgba(0, 0, 0);
+}
+
+#rectangle {
+    -fx-stroke-dash-array: 10 10;
+}
+
+ButtonBar {
+    -fx-background-color: rgba(0, 0, 0, 0.8);
+}
+
+.button {
+    -fx-background-color: none;
+}
+
+.button:hover {
+    -fx-background-color: rgba(255, 235, 48, 0.6);
+}
+
+.button:focused {
+    -fx-background-color: rgba(255, 235, 48, 0.6);
+}
+
+#anchorPane {
+    -fx-background-color: rgba(0, 0, 0, 0.8);
+}
+
+.table-view {
+    -fx-base: transparent;
+    -fx-control-inner-background: transparent;
+    -fx-background-color: transparent;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-border-color:
+        rgba(255, 255, 255, 0.7)
+        transparent
+        rgba(255, 255, 255, 0.7)
+        transparent;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 35;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color:
+        transparent
+        transparent
+        rgba(255, 255, 255, 0.4)
+        transparent;
+}
+
+.table-view .column-header .text {
+    -fx-font-size: 10pt;
+    -fx-font-family: "System";
+    -fx-text-fill: white;
+    -fx-alignment: CENTER;
+    -fx-opacity: 1;
+}
+
+.table-view .table-column {
+    -fx-alignment: CENTER;
+}
+
+.table-row-cell .text {
+    -fx-font-size: 9pt;
+    -fx-font-family: "System";
+    -fx-text-fill: black;
+    -fx-alignment: CENTER;
+    -fx-opacity: 1;
+}
+
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: -fx-focus-color;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: rgb(255, 255, 255, 0.3);
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: rgb(255, 255, 255, 0.3);
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: rgb(255, 255, 255, 0.3);
+}
+
+.scroll-bar .decrement-arrow {
+    -fx-background-color: white;
+ }
+.scroll-bar .increment-arrow {
+    -fx-background-color: white;
+}
+
+GridPane {
+    -fx-background-color: rgba(0, 0, 0, 0.8);
+}
+
+SplitPane {
+    -fx-background-color: transparent;
+}
+
+.split-pane:horizontal > .split-pane-divider {
+   -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 18;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .filler {
+    -fx-background-color: transparent;
+}
+
+#selection:hover {
+    -fx-text-fill: rgba(34, 100, 255, 0.8);
+}
+
+.dialog-pane {
+    -fx-background-color: black;
+}
+
+.dialog-pane .label {
+    -fx-text-fill: white;
+}
+
+.dialog-pane:header .header-panel {
+    -fx-background-color: black;
+}
+
+.dialog-pane:header .header-panel .label {
+    -fx-font-style: italic;
+    -fx-font-size: 2em;
+}
