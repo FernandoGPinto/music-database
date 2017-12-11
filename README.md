@@ -1,5 +1,5 @@
 # music-database
-The music database was designed around a familiar business case. It handles two tables, one containing products and the other containing orders placed by customers, linked by a join table containing order lines. By having one-to-many relationships with the other tables, the join table effectively creates the bridge for a many-to-many relationship. Users can search the database, edit records, enter new records or upload and download entire files. The
+The music database was designed around a familiar business case. It handles two tables, one containing products and the other containing orders placed by customers, linked by a join table containing order lines. By having one-to-many relationships with the other tables, the join table effectively creates the bridge for a many-to-many relationship. Users can search the database, edit records, enter new records or upload and download entire files.
 
 The goal of this project was to create a programme that is both efficient, has enough complexity to satisfy a demanding business case, but is at the same time very user-friendly. As such, records are only presented at the request of the user and it handles CSV files containing any number of records, following a specific format, as a means to quickly upload or import data into the database.
 
