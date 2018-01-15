@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="header :: header-css"/>
+</head>
+
+<div th:replace="header :: header"/>
+
+<body class="main">
+<div class="container" id="main-container">
+    <div class="cont">
+        <!-- the element whose background we're going to clip -->
+        <div class="clipped">
+            <h1>SEARCH</h1>
+        </div>
+    </div>
+    <div class="query">
+        <form id="fr" action="#" th:action="@{/demo/get-product}" method="get">
+            <div class="wrapper">
+                <div>
+                    <p><input type="checkbox" id="cb1" name="4[]" style="width:10px"/> Product Id:</p>
+                </div>
+                <div>
+                    <input type="number" id="cb1tx" name="productId" min="1" max="9999999999" disabled="true"/>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div>
+                    <p><input type="checkbox" id="cb2" name="4[]" style="width:10px"/> Product Name:</p>
+                </div>
+                <div>
+                    <input type="text" id="cb2tx" name="productName" maxlength="20" disabled="true"/>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div>
+                    <p><input type="checkbox" id="cb3" name="4[]" style="width:10px"/> Product Reference:</p>
+                </div>
+                <div>
+                    <input type="number" id="cb3tx" name="productReference" min="1" max="9999999999" disabled="true"/>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div>
+                    <p><input type="checkbox" id="cb4" name="4[]" style="width:10px"/> Stock Quantity:</p>
+                </div>
+                <div>
+                    <input type="number" id="cb4tx" name="stock" min="1" max="9999999999" disabled="true"/>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div>
+                    <p><input type="checkbox" id="cb5" name="4[]" style="width:10px"/> Price:</p>
+                </div>
+                <div>
+                    <input type="number" id="cb5tx" name="price" min="0" max="9999999999" disabled="true"/>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div>
+                    <p><input type="checkbox" id="cb6" name="4[]" style="width:10px"/> Image Link:</p>
+                </div>
+                <div>
+                    <input type="text" id="cb6tx" name="imgLink" maxlength="255" disabled="true"/>
+                </div>
+            </div>
+            <p><input class="button" type="submit" value="Submit"/> <input class="button" type="reset" value="Reset"/></p>
+        </form>
+    </div>
+    <a id="switch-button" class="button" th:href="@{/demo/order}">Switch to Orders</a>
+    <button id="hide-button" onclick="hide()">Hide</button>
+    <button id="show-button" onclick="show()">Show</button>
+    <div id="table-wrapper">
+        <table>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Product Reference</th>
+                <th>Stock Quantity</th>
+                <th>Price</th>
+                <th>Image Link</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <th:block th:each="product : ${products}">
+                <tr>
+                    <td th:text="${product.productId}">...</td>
+                    <td th:text="${product.productName}">...</td>
+                    <td th:text="${product.productReference}">...</td>
+                    <td th:text="${product.stockQuantity}">...</td>
+                    <td th:text="${product.price}">...</td>
+                    <td th:text="${product.imgLink}">...</td>
+                    <td>
+                        <form action="#" th:action="@{'/demo/product-edit/' + ${product.productId}}" method="get">
+                            <input type="submit" value="Edit" />
+                        </form>
+                    </td>
+                    <td>
+                        <form action="#" th:action="@{'/demo/delete-product/' + ${product.productId}}" method="post">
+                            <input type="submit" value="Delete" />
+                        </form>
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript" src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" th:src="@{/selectfunction.js}"></script>
+
+</body>
+</html>

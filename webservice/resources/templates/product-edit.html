@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="header :: header-css"/>
+</head>
+
+<div th:replace="header :: header"/>
+
+<body>
+<div class="container" id="main-container">
+    <div class="cont">
+        <!-- the element whose background we're going to clip -->
+        <div class="clipped">
+            <h1>EDIT</h1>
+        </div>
+    </div>
+    <div id="edit">
+        <p text="Product" />
+        <form th:action="@{'/demo/update-product/' + ${product.productId}}" method="post">
+            <div class="upload-inner-wrapper">
+                <div>
+                    <p>Product Id:</p>
+                </div>
+                <div>
+                    <input type="text" name="productId" th:value="${product.productId}" readonly="readonly"/>
+                </div>
+            </div>
+            <div class="upload-inner-wrapper">
+                <div>
+                    <p>Product Name:</p>
+                </div>
+                <div>
+                    <input type="text" name="productName" th:value="${product.productName}" maxlength="20" required="required"/>
+                </div>
+            </div>
+            <div class="upload-inner-wrapper">
+                <div>
+                    <p>Product Reference:</p>
+                </div>
+                <div>
+                    <input type="number" name="productReference" th:value="${product.productReference}" min="1" max="9999999999" required="required"/>
+                </div>
+            </div>
+            <div class="upload-inner-wrapper">
+                <div>
+                    <p>Stock Quantity:</p>
+                </div>
+                <div>
+                    <input type="number" name="stockQuantity" th:value="${product.stockQuantity}" min="0" max="9999999999" required="required"/>
+                </div>
+            </div>
+            <div class="upload-inner-wrapper">
+                <div>
+                    <p>Price:</p>
+                </div>
+                <div>
+                    <input type="number" name="price" th:value="${product.price}" required="required"/>
+                </div>
+            </div>
+            <div class="upload-inner-wrapper">
+                <div>
+                    <p>ImgLink:</p>
+                </div>
+                <div>
+                    <input type="text" name="imgLink" th:value="${product.imgLink}" maxlength="255" required="required"/>
+                </div>
+            </div>
+            <p><input class="button" type="submit" value="Submit" /> <input class="button" type="reset" value="Reset" /></p>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

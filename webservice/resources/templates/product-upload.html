@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="header :: header-css"/>
+</head>
+
+<div th:replace="header :: header"/>
+
+<body>
+
+<div class="container" id="main-container">
+    <div class="cont">
+        <!-- the element whose background we're going to clip -->
+        <div class="clipped">
+            <h1>UPLOAD</h1>
+        </div>
+    </div>
+
+    <div id="query">
+        <div class="upload-wrapper">
+            <form action="#" th:action="@{/demo/add-product}" method="post">
+                <div class="upload-inner-wrapper">
+                    <div>
+                        <p>Product Name:</p>
+                    </div>
+                    <div>
+                        <input type="text" name="productName" maxlength="20" required="required"/>
+                    </div>
+                </div>
+                <div class="upload-inner-wrapper">
+                    <div>
+                        <p>Product Reference:</p>
+                    </div>
+                    <div>
+                        <input type="number" name="productReference" min="1" max="9999999999" required="required"/>
+                    </div>
+                </div>
+                <div class="upload-inner-wrapper">
+                    <div>
+                        <p>Stock Quantity:</p>
+                    </div>
+                    <div>
+                        <input type="number" name="stockQuantity" min="0" max="9999999999" required="required"/>
+                    </div>
+                </div>
+                <div class="upload-inner-wrapper">
+                    <div>
+                        <p>Price:</p>
+                    </div>
+                    <div>
+                        <input type="number" name="price" required="required"/>
+                    </div>
+                </div>
+                <div class="upload-inner-wrapper">
+                    <div>
+                        <p>ImgLink:</p>
+                    </div>
+                    <div>
+                        <input type="text" name="imgLink" maxlength="255" required="required"/>
+                    </div>
+                </div>
+                <p><input class="button" type="submit" value="Submit" /> <input class="button" type="reset" value="Reset" /></p>
+            </form>
+            <a id="switch-button" class="button" th:href="@{/demo/order-upload}" href="/demo/order-upload">Switch to Orders</a>
+            <button id="hide-button" onclick="hide()">Hide</button>
+        </div>
+        <div id="upload-wrapper">
+            <form method="POST" th:action="@{/demo/product-upload-file}" enctype="multipart/form-data">
+                <div id="dropzone">Drop files here</div>
+                <!--<input id="fileupload" type="file" name="files[]" data-url="rest/controller/upload" multiple="true"/>-->
+                <input type="file" name="file" accept=".txt, .csv, text/csv, text/plain"/>
+                <input type="submit" value="Upload"/>
+            </form>
+        </div>
+    </div>
+    <button id="show-button" onclick="show()">Show</button>
+    <div id="table-wrapper">
+        <table>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Product Reference</th>
+                <th>Stock Quantity</th>
+                <th>Price</th>
+                <th>Image Link</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <th:block th:each="product : ${products}">
+                <tr>
+                    <td th:text="${product.productId}">...</td>
+                    <td th:text="${product.productName}">...</td>
+                    <td th:text="${product.productReference}">...</td>
+                    <td th:text="${product.stockQuantity}">...</td>
+                    <td th:text="${product.price}">...</td>
+                    <td th:text="${product.imgLink}">...</td>
+                    <td>
+                        <input th:action="@{'/demo/product-edit/' + ${product.productId}}" type="button" value="Edit" />
+                    </td>
+                    <td>
+                        <form action="#" th:action="@{'/demo/delete-product/' + ${product.productId}}" method="post">
+                            <input type="submit" value="Delete" />
+                        </form>
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript" src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" th:src="@{/uploadfunction.js}"></script>
+<script type="text/javascript" th:src="@{/hidefunction.js}"></script>
+
+</body>
+</html>

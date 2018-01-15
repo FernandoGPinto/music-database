@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="header :: header-css"/>
+</head>
+
+<div th:replace="header :: header"/>
+
+<body class="main">
+<div class="container" id="main-container">
+    <div class="cont">
+        <!-- the element whose background we're going to clip -->
+        <div class="clipped">
+            <h1>SEARCH</h1>
+        </div>
+    </div>
+    <div id="query">
+        <form id="fr" action="#" th:action="@{/demo/get-order}" method="get">
+            <div class="wrapper">
+                <div>
+                    <p><input type="checkbox" id="cb1" name="4[]" style="width:10px"/> Order Id:</p>
+                </div>
+                <div>
+                    <input type="number" id="cb1tx" name="orderId" min="1" max="9999999999" disabled="true"/>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div>
+                    <p><input type="checkbox" id="cb2" name="4[]" style="width:10px"/> Customer Name:</p>
+                </div>
+                <div>
+                    <input type="text" id="cb2tx" name="customerName" maxlength="20" disabled="true"/>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div>
+                    <p><input type="checkbox" id="cb3" name="4[]" style="width:10px"/> Order Reference:</p>
+                </div>
+                <div>
+                    <input type="number" id="cb3tx" name="orderReference" min="1" max="9999999999" disabled="true"/>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div>
+                    <p><input type="checkbox" id="cb4" name="4[]" style="width:10px"/> Customer Address:</p>
+                </div>
+                <div>
+                    <input type="text" id="cb4tx" name="customerAddress" maxlength="50" disabled="true"/>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div>
+                    <p><input type="checkbox" id="cb5" name="4[]" style="width:10px"/> Date Placed:</p>
+                </div>
+                <div>
+                    <input class="sel" type="date" id="cb5tx" name="datePlaced" disabled="true"/>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div>
+                    <p><input type="checkbox" id="cb6" name="4[]" style="width:10px"/> Order Status:</p>
+                </div>
+                <div>
+                    <select id="cb6tx" name="status" disabled="true">
+                        <option value=""></option>
+                        <option id="rec" value="RECEIVED">Received</option>
+                        <option id="pro" value="PROCESSED">Processed</option>
+                        <option id="del" value="DELIVERED">Delivered</option>
+                        <option id="ret" value="RETURNED">Returned</option>
+                    </select>
+                </div>
+            </div>
+            <p><input class="button" type="submit" value="Submit"/> <input class="button" type="reset" value="Reset"/></p>
+        </form>
+    </div>
+    <a id="switch-button" class="button" th:href="@{/demo/product}">Switch to Products</a>
+    <button id="hide-button" onclick="hide()">Hide</button>
+    <button id="show-button" onclick="show()">Show</button>
+    <div id="table-wrapper">
+        <table>
+            <tr>
+                <th>Order ID</th>
+                <th>Customer Name</th>
+                <th>Customer Address</th>
+                <th>Order Reference</th>
+                <th>Date Placed</th>
+                <th>Status</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <!-- th:each="product : ${products"+order.orderId+"}" -->
+            <th:block th:each="order : ${orders}">
+                <tr>
+                    <td th:text="${order.orderId}">...</td>
+                    <td th:text="${order.customerName}">...</td>
+                    <td th:text="${order.customerAddress}">...</td>
+                    <td th:text="${order.orderReference}">...</td>
+                    <td th:text="${order.date}">...</td>
+                    <td th:text="${order.status}">...</td>
+                    <td>
+                        <form action="#" th:action="@{'/demo/order-edit/' + ${order.orderId}}" method="get">
+                            <input type="submit" value="Edit" />
+                        </form>
+                    </td>
+                    <td>
+                        <form action="#" th:action="@{'/demo/delete-order/' + ${order.orderId}}" method="post">
+                            <input type="submit" value="Delete" />
+                        </form>
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript" src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" th:src="@{/selectfunction.js}"></script>
+<script type="text/javascript" th:src="@{/hidefunction.js}"></script>
+
+</body>
+</html>
